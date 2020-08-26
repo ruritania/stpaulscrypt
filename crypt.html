@@ -5,12 +5,17 @@
 <title>crypt</title>
         <script>
             function clicked(evt){
+				var col_count = 349;
+				var row_count = 190;
     			var e = evt.target;
 				var dim = e.getBoundingClientRect();
 				var x = evt.clientX - dim.left;
 				var y = evt.clientY - dim.top;
-				var x_col = Math.round(x/(dim.width / 349));
-                alert("x: "+ x +" column"+x_col+" y:"+y);
+				var col_width = dim.width / col_count;
+				var row_height = dim.height / row_count;
+				var x_col = Math.round(x/col_width);
+				var y_row = Math.round(y/row_height);
+                alert("x: "+ x +" column: "+x_col+" ... y:"+y+ " row: "+ y_row);
             }
         </script>
 </head>
