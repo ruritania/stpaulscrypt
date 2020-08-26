@@ -13,8 +13,8 @@
 				var y = evt.clientY - dim.top;
 				var col_width = dim.width / col_count;
 				var row_height = dim.height / row_count;
-				var x_col = Math.round(x/col_width);
-				var y_row = Math.round(y/row_height);
+				var x_col = Math.ceil(x/col_width);
+				var y_row = Math.ceil(y/row_height);
                 alert("x: "+ x +" column: "+x_col+" ... y:"+y+ " row: "+ y_row);
             }
         </script>
