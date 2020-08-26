@@ -5,9 +5,11 @@
 <title>crypt</title>
         <script>
             function clicked(evt){
-				var cols = 1745.39 / 349;
-				var x_col = Math.round(evt.clientX / cols);
-                alert("x: "+ evt.clientX +" by cols: "+ cols +" = column:" + x_col + "  y:"+evt.clientY);
+    			var e = evt.target;
+				var dim = e.getBoundingClientRect();
+				var x = evt.clientX - dim.left;
+				var y = evt.clientY - dim.top;
+                alert("x: "+ x +" y:"+y);
             }
         </script>
 </head>
