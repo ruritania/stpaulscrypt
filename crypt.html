@@ -9,7 +9,8 @@
 				var dim = e.getBoundingClientRect();
 				var x = evt.clientX - dim.left;
 				var y = evt.clientY - dim.top;
-                alert("x: "+ x +" y:"+y);
+				var x_col = Math.round(x/(dim.width / 349));
+                alert("x: "+ x +" column"+x_col+" y:"+y);
             }
         </script>
 </head>
