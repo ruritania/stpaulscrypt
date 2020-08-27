@@ -16,6 +16,11 @@
 				var x_col = Math.ceil(x/col_width);
 				var y_row = Math.ceil(y/row_height);
                 alert("column: "+x_col+" & row: "+ y_row);
+				let newElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
+				newElement.setAttribute('fill','orange');
+				newElement.setAttribute('width','200');
+				newElement.setAttribute('height','200');
+				document.getElementById('svg-drawing').appendChild(newElement);
             }
         </script>
 </head>
