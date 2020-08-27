@@ -5,8 +5,8 @@
 <title>crypt</title>
         <script>
             function clicked(evt){
-				var col_count = 349;
-				var row_count = 190;
+				var col_count = 348;
+				var row_count = 191;
     			var e = evt.target;
 				var dim = e.getBoundingClientRect();
 				var x = evt.clientX - dim.left;
@@ -15,13 +15,17 @@
 				var row_height = dim.height / row_count;
 				var col = Math.ceil(x/col_width);
 				var row = Math.ceil(y/row_height);
-				var col_x = col * col_width;
-                alert("x: "+x+" calculated x: " + col_x + " column: "+col+" & row: "+ row);
+				var col_x = (col-1) * col_width;
+				var col_percent = ((col_x/dim.width)*100) + "%";
+				var row_y = (row-1) * row_height;
+				var row_percent = ((row_y/dim.height)*100) + "%";
+                alert("column: "+col+" & row: "+ row);
 				let newElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
 				newElement.setAttribute('fill','orange');
-				newElement.setAttribute('x',x);
-				newElement.setAttribute('width',(col_width));
-				newElement.setAttribute('height',(row_height));
+				newElement.setAttribute('x',col_percent);
+				newElement.setAttribute('y',row_percent);
+				newElement.setAttribute('width',(col_width*2));
+				newElement.setAttribute('height',(row_height*2));
 				document.getElementById('clickable').appendChild(newElement);
             }
         </script>
