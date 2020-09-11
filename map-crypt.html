@@ -11,7 +11,8 @@
     var centerY = parseFloat(viewbox[3]) / 2;
     var matrixGroup = svg.getElementById("matrix-group");
 	
-	function pan(dx, dy) {     	
+	function pan(dx, dy) {     
+		alert("clicked");
 	  transformMatrix[4] += dx;
 	  transformMatrix[5] += dy;
 
