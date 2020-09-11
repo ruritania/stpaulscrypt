@@ -10,6 +10,9 @@
   <defs>
     <style>
 .cls-1,.cls-2,.cls-4{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;}.cls-1,.cls-3,.cls-4,.cls-5{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.15 0.15;}.cls-2{stroke-miterlimit:10;}.cls-3,.cls-5{fill:none;}.cls-5{stroke:red;stroke-width:0.25px;}.cls-6{opacity:0.1;}.cls-7{fill:#fff;}
+	.st4{fill:#29ABE2;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st5{fill:#29ABE2;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st6{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
 </style>
   </defs>
   <g id="matrix-group" transform="matrix(1 0 0 1 0 0)">
@@ -190,13 +193,24 @@
       </g>
     </g>
   </g>
-	<path class="button" onclick="pan(0, 25)" d="M25 5 l6 10 a20 35 0 0 0 -12 0z" />
-	<path class="button" onclick="pan(25, 0)" d="M5 25 l10 -6 a35 20 0 0 0 0 12z" />
-	<path class="button" onclick="pan(0,-25)" d="M25 45 l6 -10 a20, 35 0 0,1 -12,0z" />
-	<path class="button" onclick="pan(-25, 0)" d="M45 25 l-10 -6 a35 20 0 0 1 0 12z" />
-
-	<circle class="button" cx="25" cy="20.5" r="4" onclick="zoom(0.8)"/>
-	<circle class="button" cx="25" cy="29.5" r="4" onclick="zoom(1.25)"/>
+	
+<path id="left" class="st4" onclick="pan(25, 0)" d="M63.7,61c-4.9,5.3-8,12.5-8,20.3c0,7.5,2.7,14.3,7.2,19.5l-11.3,11.4C44.1,104,39.5,93,39.5,80.9
+	c0-12.3,4.8-23.4,12.6-31.7L63.7,61z"/>
+<path id="up" class="st4" onclick="pan(0,-25)" d="M105.4,58.7c-5.3-4.6-12.1-7.3-19.7-7.3c-7.2,0-13.9,2.6-19.1,6.8L54.9,46.4c8.2-7.3,19-11.8,30.9-11.8
+	c12.1,0,23.2,4.7,31.4,12.3L105.4,58.7z"/>
+<path id="down" class="st4" onclick="pan(0, 25)" d="M117.4,114.7c-8.3,7.8-19.4,12.5-31.6,12.5c-12,0-23-4.6-31.2-12.1l11.3-11.3
+	c5.3,4.7,12.3,7.5,19.9,7.5c7.8,0,15-3,20.3-8L117.4,114.7z"/>
+<path id="right" class="st4" onclick="pan(-25, 0)" d="M108.9,100.4c4.3-5.2,6.8-11.8,6.8-19.1c0-7.6-2.8-14.5-7.5-19.8L120,49.8c7.5,8.2,12,19.1,12,31.1
+	c0,11.9-4.5,22.8-11.9,31L108.9,100.4z"/>
+<g id="in" onclick="zoom(0.8)">
+	<path class="st5" d="M111.5,80.7H60c0,13.9,11.5,25.2,25.8,25.2S111.5,94.6,111.5,80.7z"/>
+	<line class="st6" x1="82.1" y1="92.7" x2="89.1" y2="92.7"/>
+</g>
+<g id="out" onclick="zoom(1.25)">
+	<path class="st5" d="M111.5,80.9H60C60,67,71.5,55.7,85.8,55.7S111.5,67,111.5,80.9z"/>
+	<line class="st6" x1="85.7" y1="65.2" x2="85.7" y2="71.7"/>
+	<line class="st6" x1="82.6" y1="68.5" x2="88.8" y2="68.5"/>
+</g>
 
     <script type="text/javascript"><![CDATA[
         var transformMatrix = [1, 0, 0, 1, 0, 0];
