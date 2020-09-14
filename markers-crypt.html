@@ -241,8 +241,8 @@
 			var y_percent = y_proportion*100;
 			var marker_x = w * x_proportion;
 			var marker_y = h * y_proportion;
-			var marker_w = Math.round(w/100);
-			var marker_h = Math.round(h/100);
+			var marker_w = Math.round(w/200);
+			var marker_h = Math.round(h/200);
 			let newElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
 			newElement.setAttribute('fill','orange');
 			newElement.setAttribute('x',marker_x-(marker_h/2));
