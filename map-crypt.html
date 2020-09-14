@@ -9,7 +9,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1745.39 922.52" id="map-svg">
   <defs>
     <style>
-.cls-1,.cls-2,.cls-4{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;}.cls-1,.cls-3,.cls-4,.cls-5{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.15 0.15;}.cls-2{stroke-miterlimit:10;}.cls-3,.cls-5{fill:none;}.cls-5{stroke:red;stroke-width:0.25px;}.cls-6{opacity:0.1;}.cls-7{fill:#fff;}
+.cls-1,.cls-2,.cls-4{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;}.cls-1,.cls-3,.cls-4,.cls-5{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.15 0.15;}.cls-2{stroke-miterlimit:10;}.cls-3,.cls-5{fill:none;}.cls-5{stroke:red;stroke-width:0.25px;}.cls-6{opacity:0.1;}.cls-7{opacity: 0;}
 	.st4{fill:#29ABE2;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
 	.st5{fill:#29ABE2;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
 	.st6{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
@@ -186,9 +186,9 @@
         <path class="cls-2" d="M483.65,640.13V658.4h4.44v9H463.54v75.75l-4.43-.4v7.75H289.32l-.58,4h-36v-5.18h-9v-3H188.4v3h-8.26v5.51H143.4v-38l4.66-.27.69-6.93,2.86-.32V655.71l-3.43-.31v-8.56H121v-6.37H113v-6.85h2.43V478.3h17.32V494h62.43V481.32h47.24v6h20.78v41h27.22v6.71h6.79l.27,4.85h18.79l.65-5.19h6.95l-.39-6.62h6.89v16.71h-2v18.44h2v13.27h-7.89v7H251.12v-6.87H184.28v35.52h23.45v40.45a30.14,30.14,0,0,0-21,21.72h-2.15v13.79h2a30.18,30.18,0,0,0,21.57,22.59V713h15.4V710.8a30.19,30.19,0,0,0,21.92-22.68H287V724.4h-9.8v5.7h15.5v-42h15.58v24h21.69v6.37h15.67v24.71h31.32V718.37h16.76V712h21.36v-8.54h35.76V676.32H439.87L415.05,656v-8.16h-21.7V612h6.37V598.56h1.76v6.56h60v6.45h5.95v8h7.54v20.52h10.22"/>
         <path class="cls-2" d="M83.43,338.42H71.78v7.71H83.43v28.22H72.29v7.29H83.43v27.87l-11.14.11v6.88l11.14-.14v28.52H72.29V452H83.43v31.41H72.29V490H83.43v26.39H72.29v7.2H83.43v28.73H72.29V560H83.43v5.2H92v16.08H83.43v6.11H72.29v7.21H83.43V622H43.22v-5.45H35.93V622H7.54V594.57H35.93v6.21h7.29v-6.21H56v-7.21H43.22v-5.69H35.93v5.69H7.54V560H35.93v5.62h7.29V560H56v-7.62H43.22v-5.94H35.93v5.94H7.54V523.62H35.93v6.2h7.29v-6.2H56v-7.2H43.22v-4.84H35.93v4.84H7.54V490H35.93v5.9h7.29V490H56v-6.62H43.22v-5.94H35.93v5.94H7.54V452H35.93v6.78h7.29V452H56v-7.12H43.22v-5.76H35.93v5.76H7.54v-27.6l28.39-.35v6.25h7.29v-6.33L56,416.69v-6.92l-12.73.13v-5.71H35.93V410l-28.39.27v-28.6H35.93v6.62h7.29v-6.62H56v-7.29H43.22v-5.43H35.93v5.43H7.54V346.13H35.93v7.21h7.29v-7.21H55.41v-7.71H43.22v-5.77H35.93v5.77H7.54v-27H35.93v5.94h7.29v-5.94H83.43v27M97.2,633.62H93.48V300.47h2.18V293.8H86.11v10L.5,304.53V629.41H85.44v11.06H97.2l.24-6.85"/>
       </g>
-      <g id="clickable">
-        <g class="cls-6">
-          <rect class="cls-7" x="0.09" y="0.13" width="1741.59" height="921.89"/>
+	  <g id="clickable" onclick="clicked(evt)">
+	    <g class="cls-6">
+	      <rect class="cls-7" x="0.09" y="0.13" width="1741.59" height="921.89" id="overlay"/>
         </g>
       </g>
     </g>
@@ -236,6 +236,30 @@
             var newMatrix = "matrix(" +  transformMatrix.join(' ') + ")";
             matrixGroup.setAttributeNS(null, "transform", newMatrix);
         }
+		function clicked(evt){
+			var w = document.getElementById('overlay').getAttribute('width')*1; 
+			var h = document.getElementById('overlay').getAttribute('height')*1; 
+			var e = evt.target;
+			var dim = e.getBoundingClientRect();
+			var x = evt.clientX - dim.left;
+			var y = evt.clientY - dim.top;
+			var x_proportion = x/dim.width;
+			var y_proportion = y/dim.height;
+			var x_percent = x_proportion*100;
+			var y_percent = y_proportion*100;
+			var marker_x = w * x_proportion;
+			var marker_y = h * y_proportion;
+			var marker_w = Math.round(w/200);
+			var marker_h = Math.round(h/200);
+			let newElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
+			newElement.setAttribute('fill','orange');
+			newElement.setAttribute('x',marker_x-(marker_w/2));
+			newElement.setAttribute('y',marker_y-(marker_h/2));
+			newElement.setAttribute('width',marker_w);
+			newElement.setAttribute('height',marker_h);
+			document.getElementById('clickable').appendChild(newElement);
+			alert("x: "+Math.round(x)+" ("+x_percent.toFixed(2)+"%) & y: "+ Math.round(y) + " ("+y_percent.toFixed(2)+"%)");
+		}
     ]]></script>
 </svg>
 </body>
