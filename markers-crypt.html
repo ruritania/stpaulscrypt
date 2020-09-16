@@ -9,7 +9,7 @@
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" id="map-svg">
   <defs>
     <style>
-.cls-1,.cls-2,.cls-4,.cls-7,.cls-8{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;stroke-width:1.14px;}.cls-1,.cls-3,.cls-4{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.17 0.17;}.cls-2,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-3,.cls-9{fill:none;}.cls-5{opacity:0.1;}.cls-6{fill:#fff;}.cls-8,.cls-9,.cls-7{stroke:#fff;stroke-width:3.45px;}.gridline{stroke:#999;stroke-width:0.25px;}
+.cls-1,.cls-2,.cls-4,.cls-7,.cls-8{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;stroke-width:1.14px;}.cls-1,.cls-3,.cls-4{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.17 0.17;}.cls-2,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-3,.cls-9{fill:none;}.cls-5{opacity:0.1;}.cls-6{fill:#fff;}.cls-8,.cls-9,.cls-7{stroke:#fff;stroke-width:3.45px;}.gridline{stroke:#999;stroke-width:0.25px;}.alert-box{fill:#fff;}.alert-text{font-size:18px;font-family:MyriadPro-Regular, Myriad Pro;}
 </style>
   </defs>
   <g id="matrix-group" transform="matrix(1 0 0 1 0 0)">
@@ -261,7 +261,6 @@
 		
 		
 		
-		
 		function clicked(evt){
 			var e = evt.target;
 			var dim = e.getBoundingClientRect();
@@ -286,7 +285,6 @@
 			var col_no = Math.floor(marker_x/row_height);
 			var col_x = (col_no*(row_height));
 			
-			console.log("y position: " + marker_y + "/ row: " + row_no + "/ marker height: "+ row_height + "/ row y: " + row_y);
 			let newElement = document.createElementNS('http://www.w3.org/2000/svg','rect');
 			newElement.setAttribute('fill','orange');
 			newElement.setAttribute('x',col_x);
@@ -294,7 +292,8 @@
 			newElement.setAttribute('width',marker_h);
 			newElement.setAttribute('height',marker_h);
 			document.getElementById('crypt').appendChild(newElement);
-			// alert("x: "+Math.round(x)+" ("+x_percent.toFixed(2)+"%) & y: "+ Math.round(y) + " ("+y_percent.toFixed(2)+"%)");
+			
+			alert("x: "+Math.round(x)+" ("+x_percent.toFixed(2)+"%) & y: "+ Math.round(y) + " ("+y_percent.toFixed(2)+"%)");
 		}
     ]]></script>
 </svg>
