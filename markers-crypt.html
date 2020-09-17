@@ -9,7 +9,7 @@
 	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" id="map-svg">
   <defs>
     <style>
-.cls-1,.cls-2,.cls-4,.cls-7,.cls-8{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;stroke-width:1.14px;}.cls-1,.cls-3,.cls-4{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.17 0.17;}.cls-2,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-3,.cls-9{fill:none;}.cls-5{opacity:0.1;}.cls-6{fill:#fff;}.cls-8,.cls-9,.cls-7{stroke:#fff;stroke-width:3.45px;}.gridline{stroke:#999;stroke-width:0.25px;}.alert-box{fill:#fff;}.alert-text{font-size:18px;font-family:MyriadPro-Regular, Myriad Pro;}
+.cls-1,.cls-2,.cls-4,.cls-7,.cls-8{fill:#29abe2;}.cls-1,.cls-2,.cls-3,.cls-4{stroke:#29abe2;stroke-width:1.14px;}.cls-1,.cls-3,.cls-4{stroke-linecap:round;stroke-linejoin:round;}.cls-1{stroke-dasharray:0.17 0.17;}.cls-2,.cls-8,.cls-9{stroke-miterlimit:10;}.cls-3,.cls-9{fill:none;}.cls-5{opacity:0.1;}.cls-6{fill:#fff;}.cls-8,.cls-9,.cls-7{stroke:#fff;stroke-width:3.45px;}.gridline{stroke:#999;stroke-width:0.25px;}.text-box{font-size:36px;fill:#000;font-family:MyriadPro-Regular, Myriad Pro;}.alert-text{}
 </style>
   </defs>
   <g id="matrix-group" transform="matrix(1 0 0 1 0 0)">
@@ -184,6 +184,9 @@
     <path class="cls-2" d="M532,747v21.54h4.89V779.2h-27v89.33l-4.89-.47v9.13H318.26l-.63,4.74H278v-6.1h-9.85v-3.58H207.25v3.58h-9.09v6.5H157.75V837.5l5.12-.32.76-8.17,3.15-.38V765.37L163,765V754.9H133.14v-7.51H124.3v-8.08H127V556.14H146v18.47h68.67V559.7h52v7.11h22.86v48.4h29.94v7.91h7.48l.29,5.73H347.9l.71-6.13h7.65l-.43-7.8h7.58v19.7H361.2v21.75h2.21V672h-8.68v8.19H276.24v-8.1H202.71V714h25.8v47.7c-11.41,3.5-20.21,13.27-23.07,25.62h-2.36v16.26h2.17c2.67,12.92,11.8,23.18,23.72,26.64v2.71h16.95v-2.6C258,827,267.32,816.65,270,803.58h45.66v42.79H304.9v6.72H322V803.58h17.13V832H363v7.5h17.23V868.6h34.46V839.26h18.43v-7.51h23.5V821.67h39.34v-32h-12l-27.3-24v-9.62H432.7V713.8h7V698h1.93v7.74h66v7.61h6.55v9.48h8.29V747H533.7"/>
     <path class="cls-2" d="M91.77,391.17H79v9.09H91.77v33.29H79.52v8.6H91.77V475l-12.25.13v8.11l12.25-.16v33.64H79.52v8.39H91.77v37H79.52V570H91.77v31.12H79.52v8.49H91.77v33.89H79.52v9H91.77v6.12h9.4v19h-9.4v7.21H79.52v8.49H91.77v32.31H47.54v-6.42h-8v6.42H8.29V693.25H39.53v7.33h8v-7.33h14v-8.49h-14V678h-8v6.72H8.29v-32.3H39.53v6.61h8v-6.61h14v-9h-14v-7h-8v7H8.29V609.58H39.53v7.31h8v-7.31h14v-8.49h-14v-5.7h-8v5.7H8.29V570H39.53v7h8v-7h14v-7.8h-14v-7h-8v7H8.29v-37H39.53v8h8v-8h14v-8.39h-14v-6.8h-8v6.8H8.29V484.17l31.24-.4v7.36h8v-7.47l14-.18v-8.16l-14,.15v-6.74h-8v6.82l-31.24.32V442.15H39.53V450h8v-7.8h14v-8.6h-14v-6.41h-8v6.41H8.29V400.26H39.53v8.51h8v-8.51H61v-9.09H47.54v-6.8h-8v6.8H8.29V359.36H39.53v7h8v-7H91.77v31.81m15.15,348.14h-4.09V346.42h2.39v-7.87H94.72V350.3l-94.17.9V734.35H94v13h12.94l.27-8.08"/>
 </g>
+    <text class="text-box" id="alert" x="0" y="0">
+		x:
+    </text>
   <g id="clickable" onclick="clicked(evt)">
     <g class="cls-5">
       <rect class="cls-6" id="overlay" x="0" y="0" width="1920" height="1080"/>
@@ -259,8 +262,6 @@
 			document.getElementById('grid').append(newLine);
 		}
 		
-		
-		
 		function clicked(evt){
 			var e = evt.target;
 			var dim = e.getBoundingClientRect();
@@ -293,7 +294,23 @@
 			newElement.setAttribute('height',marker_h);
 			document.getElementById('crypt').appendChild(newElement);
 			
-			alert("x: "+Math.round(x)+" ("+x_percent.toFixed(2)+"%) & y: "+ Math.round(y) + " ("+y_percent.toFixed(2)+"%)");
+			document.getElementById('alert').textContent = "x: "+x_percent.toFixed(2)+" / y: "+y_percent.toFixed(2);
+			if (x_percent>50)
+				{
+					var text_x = col_x - 250;
+				} else {
+					var text_x = col_x+10;
+				}
+			if (y_percent>50)
+				{
+					var text_y = row_y - 10;
+				} else{
+					var text_y = row_y + 30;
+				}
+			document.getElementById('alert').setAttribute('x',text_x);
+			document.getElementById('alert').setAttribute('y',text_y);
+			
+			//alert("x: "+Math.round(x)+" ("+x_percent.toFixed(2)+"%) & y: "+ Math.round(y) + " ("+y_percent.toFixed(2)+"%)");
 		}
     ]]></script>
 </svg>
